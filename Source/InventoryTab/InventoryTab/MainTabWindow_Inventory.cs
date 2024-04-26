@@ -31,7 +31,7 @@ namespace InventoryTab{
         {
             get
             {
-                return new Vector2(600f, 750f);
+                return new Vector2(600f, 850f);
             }
         }
 
@@ -154,63 +154,73 @@ namespace InventoryTab{
             
         }
 
-        private void DrawTabs(Rect rect) {
+        private void DrawTabs(Rect rect)
+        {
             Rect tabRect = new Rect(rect);
-            //Need to give it a minY or they get drawn one pixel tall
-            tabRect.yMin += 120f;
+            tabRect.yMin += 90f; // Adjust the vertical position of the first tab row
 
-            List<TabRecord> tabs = new List<TabRecord>();
-            
-            //Creating all the tabs, we have to reCreate all these at runtime because they don't update
-            TabRecord tabRec_All = new TabRecord("TabAll".Translate(), delegate ()                     { TabClick(Tabs.All); },             _currentTab == Tabs.All);
-            
-            TabRecord tabRec_Foods = new TabRecord("TabFoods".Translate(), delegate ()                 { TabClick(Tabs.Foods); },           _currentTab == Tabs.Foods);
-            TabRecord tabRec_Manufactured = new TabRecord("TabManufactured".Translate(), delegate ()    {  TabClick(Tabs.Manufactured); },  _currentTab == Tabs.Manufactured);
-            TabRecord tabRec_RawResources = new TabRecord("TabRawResources".Translate(), delegate ()  {  TabClick(Tabs.RawResources); },    _currentTab == Tabs.RawResources);
-            TabRecord tabRec_Items = new TabRecord("TabItems".Translate(), delegate ()                 {  TabClick(Tabs.Items); },          _currentTab == Tabs.Items);
+            List<TabRecord> tabsRow1 = new List<TabRecord>();
+            List<TabRecord> tabsRow2 = new List<TabRecord>();
 
-            TabRecord tabRec_Weapon = new TabRecord("TabWeapons".Translate(), delegate ()              {  TabClick(Tabs.Weapons); },        _currentTab == Tabs.Weapons);
-            TabRecord tabRec_Apperal = new TabRecord("TabApparel".Translate(), delegate ()             {  TabClick(Tabs.Apperal); },        _currentTab == Tabs.Apperal);
-            TabRecord tabRec_Buildings = new TabRecord("TabBuildings".Translate(), delegate ()         {  TabClick(Tabs.Building); },       _currentTab == Tabs.Building);
-            TabRecord tabRec_Chunks = new TabRecord("TabChunks".Translate(), delegate ()               { TabClick(Tabs.Chunks); },          _currentTab == Tabs.Chunks);
-            TabRecord tabRec_Corpses = new TabRecord("TabCorpses".Translate(), delegate ()             { TabClick(Tabs.Corpses); },         _currentTab == Tabs.Corpses);
-                    
-            //Add them to the list
-            tabs.Add(tabRec_All);
-            tabs.Add(tabRec_Foods);
-            tabs.Add(tabRec_Manufactured);
-            tabs.Add(tabRec_RawResources);
-            tabs.Add(tabRec_Items);
+            // Creating all the tabs
+            TabRecord tabRec_All = new TabRecord("TabAll".Translate(), delegate () { TabClick(Tabs.All); }, _currentTab == Tabs.All);
+            TabRecord tabRec_Foods = new TabRecord("TabFoods".Translate(), delegate () { TabClick(Tabs.Foods); }, _currentTab == Tabs.Foods);
+            TabRecord tabRec_Manufactured = new TabRecord("TabManufactured".Translate(), delegate () { TabClick(Tabs.Manufactured); }, _currentTab == Tabs.Manufactured);
+            TabRecord tabRec_RawResources = new TabRecord("TabRawResources".Translate(), delegate () { TabClick(Tabs.RawResources); }, _currentTab == Tabs.RawResources);
+            TabRecord tabRec_Items = new TabRecord("TabItems".Translate(), delegate () { TabClick(Tabs.Items); }, _currentTab == Tabs.Items);
+            TabRecord tabRec_Weapon = new TabRecord("TabWeapons".Translate(), delegate () { TabClick(Tabs.Weapons); }, _currentTab == Tabs.Weapons);
+            TabRecord tabRec_Apperal = new TabRecord("TabApparel".Translate(), delegate () { TabClick(Tabs.Apperal); }, _currentTab == Tabs.Apperal);
+            TabRecord tabRec_Buildings = new TabRecord("TabBuildings".Translate(), delegate () { TabClick(Tabs.Building); }, _currentTab == Tabs.Building);
+            TabRecord tabRec_Chunks = new TabRecord("TabChunks".Translate(), delegate () { TabClick(Tabs.Chunks); }, _currentTab == Tabs.Chunks);
+            TabRecord tabRec_Corpses = new TabRecord("TabCorpses".Translate(), delegate () { TabClick(Tabs.Corpses); }, _currentTab == Tabs.Corpses);
 
-            tabs.Add(tabRec_Weapon);
-            tabs.Add(tabRec_Apperal);
-            tabs.Add(tabRec_Buildings);
-            tabs.Add(tabRec_Chunks);
-            tabs.Add(tabRec_Corpses);
-            
-            //Draw the tabs, the last argument is how many rows you want
-            TabDrawer.DrawTabs(tabRect, tabs, 2);
+            // Add tabs to the first row
+            tabsRow1.Add(tabRec_All);
+            tabsRow1.Add(tabRec_Foods);
+            tabsRow1.Add(tabRec_Manufactured);
+            tabsRow1.Add(tabRec_RawResources);
+            tabsRow1.Add(tabRec_Items);
+
+            // Add tabs to the second row
+            tabsRow2.Add(tabRec_Weapon);
+            tabsRow2.Add(tabRec_Apperal);
+            tabsRow2.Add(tabRec_Buildings);
+            tabsRow2.Add(tabRec_Chunks);
+            tabsRow2.Add(tabRec_Corpses);
+
+            // Draw the first row of tabs
+            Rect tabRectRow1 = new Rect(tabRect);
+            tabRectRow1.height = 32f;
+            TabDrawer.DrawTabs(tabRectRow1, tabsRow1, 600f);
+
+            // Draw the second row of tabs below the first row
+            Rect tabRectRow2 = new Rect(tabRect);
+            tabRectRow2.yMin = tabRectRow1.yMax + 10f; // Adjust the vertical spacing between rows
+            tabRectRow2.height = 32f;
+            TabDrawer.DrawTabs(tabRectRow2, tabsRow2, 600f);
         }
 
-        private void DrawMainRect(Rect inRect, List<Slot> slots) {
-            Rect mainRect = new Rect(inRect.x, inRect.y + 37f + (_slotHeight * 3), inRect.width, inRect.height - 37f);
+        private void DrawMainRect(Rect inRect, List<Slot> slots)
+        {
+            Rect mainRect = new Rect(inRect.x, inRect.y + 150f, inRect.width, inRect.height - 150f);
             //Creats slots for all the items; combines, sorts into catergorys and checks for searches all in one line 
             List<Slot> categorizedSlots = GetSearchForList(slots);
             //Sort based on market value
             categorizedSlots.Sort();
 
             //This is for the scrolling
-            Rect viewRect = new Rect(0, 0, mainRect.width - 16f, categorizedSlots.Count * _slotHeight + 6f + (_slotHeight * 3));
+            Rect viewRect = new Rect(0, 0, mainRect.width - 16f, categorizedSlots.Count * _slotHeight + 6f);
             Widgets.BeginScrollView(mainRect, ref _scrollPosition, viewRect);
             {
-                for (int i = 0; i < categorizedSlots.Count; i++) {
+                for (int i = 0; i < categorizedSlots.Count; i++)
+                {
                     Rect slotRect = new Rect(0, i * _slotHeight, viewRect.width, _slotHeight);
 
                     //For every second slot hightlight it to make it a bit easier to see
                     if (i % 2 == 1) Widgets.DrawLightHighlight(slotRect);
 
                     Widgets.DrawHighlightIfMouseover(slotRect);
-                    
+
                     //Draw the slot
                     DrawThingSlot(categorizedSlots[i], slotRect);
                 }

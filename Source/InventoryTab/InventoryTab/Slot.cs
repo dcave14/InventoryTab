@@ -8,7 +8,8 @@ using Verse;
 
 namespace InventoryTab
 {
-    public class Slot : IComparable<Slot> {
+    public class Slot : IComparable<Slot>
+    {
         //This is the thing that is in this slot
         public Thing thingInSlot { get; private set; }
         public MainTabWindow_Inventory.Tabs tab { get; private set; }
@@ -18,8 +19,9 @@ namespace InventoryTab
         //This is all of the thing stack that was found
         public List<Thing> groupedThings;
         public int stackSize;
-        
-        public Slot(Thing thing, string tId, MainTabWindow_Inventory.Tabs tab) {
+
+        public Slot(Thing thing, string tId, MainTabWindow_Inventory.Tabs tab)
+        {
             this.thingInSlot = thing;
             this.thingId = tId;
             this.tab = tab;
@@ -33,22 +35,29 @@ namespace InventoryTab
         //1 means the object is greater then what it's being compared to
         //-1 means the object is less then what it's being compared to
         // 0 means they are equal
-        public int CompareTo(Slot other) {
-            if (thingInSlot.MarketValue > other.thingInSlot.MarketValue) {
+        public int CompareTo(Slot other)
+        {
+            if (thingInSlot.MarketValue > other.thingInSlot.MarketValue)
+            {
                 return 1;
-            } else if (thingInSlot.MarketValue < other.thingInSlot.MarketValue) {
+            }
+            else if (thingInSlot.MarketValue < other.thingInSlot.MarketValue)
+            {
                 return -1;
             }
 
             //If things have the same market value sort based on name
-            if (thingInSlot.MarketValue == other.thingInSlot.MarketValue) {
+            if (thingInSlot.MarketValue == other.thingInSlot.MarketValue)
+            {
                 //More corpse bullshit
-                if (thingInSlot.def.IsWithinCategory(ThingCategoryDefOf.Corpses) == true && other.thingInSlot.def.IsWithinCategory(ThingCategoryDefOf.Corpses) == true){
-                    
+                if (thingInSlot.def.IsWithinCategory(ThingCategoryDefOf.Corpses) == true && other.thingInSlot.def.IsWithinCategory(ThingCategoryDefOf.Corpses) == true)
+                {
+
                     Corpse a = thingInSlot as Corpse;
                     Corpse b = other.thingInSlot as Corpse;
-                    
-                    if (a != null && b != null && a.InnerPawn.def.race.Humanlike == true && b.InnerPawn.def.race.Humanlike == true) {
+
+                    if (a != null && b != null && a.InnerPawn.def.race.Humanlike == true && b.InnerPawn.def.race.Humanlike == true)
+                    {
                         return string.Compare(a.InnerPawn.Label, b.InnerPawn.Label, StringComparison.CurrentCulture);
                     }
 

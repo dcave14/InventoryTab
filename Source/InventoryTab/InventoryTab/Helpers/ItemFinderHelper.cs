@@ -42,8 +42,9 @@ namespace InventoryTab.Helpers
             if (options.SearchPawns == true){
                 //Get all the pawn. AllPawnsSpawned is the only list i could find that didn't
                 //return null
-                List<Pawn> pawns = Find.CurrentMap.mapPawns.AllPawnsSpawned as List<Pawn>;
-                    for (int i = 0; i < pawns.Count; i++) {
+                List<Pawn> pawns = map.mapPawns.AllPawnsSpawned.ToList();
+                for (int i = 0; i < pawns.Count; i++)
+                {
                     //Check if pawn is not null and if not an animal and is apart of the colony as a colonist or a prisoner
                     if (pawns[i] != null 
                         && ((pawns[i].def.race.Animal == true || pawns[i].IsColonist) || pawns[i].IsPrisonerOfColony) == true) {
