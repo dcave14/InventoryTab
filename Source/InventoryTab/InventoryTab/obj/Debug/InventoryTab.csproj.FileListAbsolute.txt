@@ -23,3 +23,8 @@ C:\SteamLibrary\steamapps\workshop\content\294100\1509278793\Source\InventoryTab
 C:\SteamLibrary\steamapps\workshop\content\294100\1509278793\1.4\Assemblies\InventoryTab.dll
 C:\SteamLibrary\steamapps\workshop\content\294100\1509278793\Source\InventoryTab\InventoryTab\obj\Debug\InventoryTab.csproj.CopyComplete
 C:\SteamLibrary\steamapps\workshop\content\294100\1509278793\Source\InventoryTab\InventoryTab\obj\Debug\InventoryTab.dll
+E:\My Rimworld Mods\InventoryTab (1.5 Forked)\1.4\Assemblies\InventoryTab.dll
+E:\My Rimworld Mods\InventoryTab (1.5 Forked)\Source\InventoryTab\InventoryTab\obj\Debug\InventoryTab.csproj.AssemblyReference.cache
+E:\My Rimworld Mods\InventoryTab (1.5 Forked)\Source\InventoryTab\InventoryTab\obj\Debug\InventoryTab.csproj.CoreCompileInputs.cache
+E:\My Rimworld Mods\InventoryTab (1.5 Forked)\Source\InventoryTab\InventoryTab\obj\Debug\InventoryTab.csproj.CopyComplete
+E:\My Rimworld Mods\InventoryTab (1.5 Forked)\Source\InventoryTab\InventoryTab\obj\Debug\InventoryTab.dll

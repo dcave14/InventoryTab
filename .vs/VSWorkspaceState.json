@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\About",
     "\\Source",
-    "\\Source\\InventoryTab"
+    "\\Source\\InventoryTab",
+    "\\Source\\InventoryTab\\InventoryTab"
   ],
-  "SelectedNode": "\\Source\\InventoryTab\\InventoryTab.sln",
+  "SelectedNode": "\\Source\\InventoryTab\\InventoryTab\\MainTabWindow_Inventory.cs",
   "PreviewInSolutionExplorer": false
 }
