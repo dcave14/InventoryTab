@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <packageId>Kota.InventoryTab</packageId>
+  <packageId>Cavenaugh.InventoryTab</packageId>
   <name>InventoryTab</name>
-  <author>SirKota</author>
   <author>Cavenaugh</author>
   <supportedVersions>
 	<li>1.0</li>
@@ -12,5 +11,5 @@
 	<li>1.4</li>
 	<li>1.5</li>
   </supportedVersions>
-  <description>Adds a new tab to view all of the colonies stockpiles at once! With options to see all visible items on the map and the inventories of colonist, prisoners and the dead!</description>
+  <description>Adds a new tab to view all of the colonies stockpiles at once! With options to see all visible items on the map and the inventories of colonist, prisoners and the dead! Mod by SirKota / 1.5 Fork by Cavenaugh </description>
 </ModMetaData>
